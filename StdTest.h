@@ -69,16 +69,6 @@
     STD_TEST_DO(expr, return ret_expr)
     ///< test macros
 
-#define STD_TEST_PTR(expr) \
-    STD_TEST_DO(expr != nullptr, {})
-    ///< test macros
-#define STD_TEST_PTR_DO(expr, do_expr) \
-    STD_TEST_DO(expr != nullptr, do_expr)
-    ///< test macros
-#define STD_TEST_PTR_RET(expr, ret_expr) \
-    STD_TEST_DO(expr != nullptr, return ret_expr)
-    ///< test macros
-
 #define STD_TEST_NA(expr) \
     ;
     ///< test macros
