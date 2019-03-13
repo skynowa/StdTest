@@ -68,7 +68,6 @@
 #define STD_TEST_RET(expr, ret_expr) \
     STD_TEST_DO(expr, return ret_expr)
     ///< test macros
-
 #define STD_TEST_NA(expr) \
     ;
     ///< test macros
