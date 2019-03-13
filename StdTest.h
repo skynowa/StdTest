@@ -20,31 +20,6 @@
 #include <string>
 #include <iostream>
 //-------------------------------------------------------------------------------------------------
-///@name check condition
-///@{
-#define STD_CHECK_RET(expr, return_expr) \
-    { if ((expr)) { return (return_expr); } }
-    ///< check expression and return value
-#define STD_CHECK_DO(expr, do_expr) \
-    { if ((expr)) { do_expr; } }
-    ///< check expression and do instructions
-#define STD_CHECK_MSG(expr, comment) \
-    { if ((expr)) { std::cout << (comment) << std::endl; } }
-    ///< check expression and show message with comment
-#define STD_CHECK_MSG_RET(expr, comment, return_expr) \
-    { if ((expr)) { std::cout << (comment) << std::endl; return (return_expr); } }
-    ///< check expression, show message with comment and return value
-#define STD_CHECK_MSG_DO(expr, comment, do_expr) \
-    { if ((expr)) { std::cout << (comment) << std::endl; do_expr; } }
-    ///< check expression, show message with comment and do instructions
-#define STD_CHECK_NA(var) \
-    ;
-    ///< at this point check code for variable is not applicable
-#define STD_CHECKS_NA \
-    ;
-    ///< at this point check code for variables is not applicable
-///@}
-//-------------------------------------------------------------------------------------------------
 #define STD_TRACE_POINT \
     { \
         std::cout \
