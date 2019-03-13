@@ -45,34 +45,6 @@
     ///< at this point check code for variables is not applicable
 ///@}
 //-------------------------------------------------------------------------------------------------
-///@name Trace variables (variable with value)
-///@{
-#define STD_TRACE_VAR(v1) \
-    #v1 ": " << (v1)
-#define STD_TRACE_VAR2(v1, v2) \
-    STD_TRACE_VAR(v1) << ", " << STD_TRACE_VAR(v2)
-#define STD_TRACE_VAR3(v1, v2, v3) \
-    STD_TRACE_VAR2(v1, v2) << ", " << STD_TRACE_VAR(v3)
-#define STD_TRACE_VAR4(v1, v2, v3, v4) \
-    STD_TRACE_VAR3(v1, v2, v3) << ", " << STD_TRACE_VAR(v4)
-#define STD_TRACE_VAR5(v1, v2, v3, v4, v5) \
-    STD_TRACE_VAR4(v1, v2, v3, v4) << ", " << STD_TRACE_VAR(v5)
-#define STD_TRACE_VAR6(v1, v2, v3, v4, v5, v6) \
-    STD_TRACE_VAR5(v1, v2, v3, v4, v5) << ", " << STD_TRACE_VAR(v6)
-#define STD_TRACE_VAR7(v1, v2, v3, v4, v5, v6, v7) \
-    STD_TRACE_VAR6(v1, v2, v3, v4, v5, v6) << ", " << STD_TRACE_VAR(v7)
-#define STD_TRACE_VAR8(v1, v2, v3, v4, v5, v6, v7, v8) \
-    STD_TRACE_VAR7(v1, v2, v3, v4, v5, v6, v7) << ", " << STD_TRACE_VAR(v8)
-#define STD_TRACE_VAR9(v1, v2, v3, v4, v5, v6, v7, v8, v9) \
-    STD_TRACE_VAR8(v1, v2, v3, v4, v5, v6, v7, v8) << ", " << STD_TRACE_VAR(v9)
-
-#define STD_UNKNOWN_VAR(v) \
-    "Unknown " << STD_TRACE_VAR(v)
-
-#define STD_TRACE_PTR(p) \
-    #p ": " << "{" << p << ", " << (p ? *p : 0) << "}"
-///@}
-//-------------------------------------------------------------------------------------------------
 #define STD_TRACE_POINT \
     { \
         std::cout \
@@ -94,26 +66,6 @@
     }
     ///< show not implemented message and return value
 //-------------------------------------------------------------------------------------------------
-#define STD_VERIFY(expr) \
-    { \
-        if ( !(expr) ) { \
-            std::cout \
-                << "\n" \
-                << "------------------- STD_VERIFY -------------------" << "\n" \
-                << " Module:     " << stdtest::modulePath()             << "\n" \
-                << " Expression: " << #expr                             << "\n" \
-                << " File:       " << __FILE__                          << "\n" \
-                << " Function:   " << __FUNCTION__                      << "\n" \
-                << " Line:       " << __LINE__                          << "\n" \
-                << " Last error: " << std::strerror(errno)              << "\n" \
-                << " Date time:  " << stdtest::currentDateTime()        << "\n" \
-                << "--------------------------------------------------" << "\n" \
-                << std::flush; \
-            \
-            (void)::exit(EXIT_FAILURE); \
-        } \
-    }
-    ///< check expression (work in debug and release modes)
 #define STD_TEST_DO(expr, do_expr) \
     { \
         if ( !(expr) ) { \
