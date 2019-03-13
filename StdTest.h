@@ -6,9 +6,14 @@
 
 #pragma once
 
-// FreeBSD
-#if defined(__FreeBSD__)
+#if   defined(_MSC_VER)
+#elif defined(__linux__)
+    #include <unistd.h>
+    #include <linux/limits.h>
+#elif defined(__FreeBSD__)
     #include <sys/sysctl.h>
+#elif defined(__APPLE__)
+#else
 #endif
 
 // C library
@@ -19,6 +24,7 @@
 // STL
 #include <string>
 #include <iostream>
+#include <algorithm>
 //-------------------------------------------------------------------------------------------------
 #define STD_TRACE_POINT \
     { \
