@@ -81,6 +81,10 @@
 #define STD_NOT_IMPLEMENTED \
     STD_TEST(false && "Not implemented")
     ///< show not implemented message and return value
+
+#define STD_UNUSED(arg) \
+	{ static_cast<void>( ((true) ? (arg) : (arg)) ); }
+	///< hide "unused variable" warnings
 //-------------------------------------------------------------------------------------------------
 namespace stdtest
 {
