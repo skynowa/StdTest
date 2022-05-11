@@ -36,7 +36,7 @@ modulePath()
 {
     std::string sRv;
 
-#if   defined(_MSC_VER)
+#if   defined(_WIN32)
     sRv.resize(MAX_PATH);
 
     DWORD stored = ::GetModuleFileName(nullptr, &sRv.at(0), static_cast<DWORD>( sRv.size() ));
