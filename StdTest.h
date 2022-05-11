@@ -6,14 +6,17 @@
 
 #pragma once
 
-#if   defined(_MSC_VER)
+#if   defined(_WIN32)
+    // n/a
 #elif defined(__linux__)
     #include <unistd.h>
     #include <linux/limits.h>
 #elif defined(__FreeBSD__)
     #include <sys/sysctl.h>
 #elif defined(__APPLE__)
+    // n/a
 #else
+    #warning StdTest: unsupported OS environment
 #endif
 
 // C library
