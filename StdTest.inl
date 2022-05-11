@@ -13,15 +13,15 @@ currentDateTime()
 {
     std::string sRv;
 
-    time_t timeNow {std::time(nullptr)};
+    constexpr std::size_t buffSize           {80};
+    char                  buff[buffSize + 1] {};
 
-    std::tm *timeLocal = std::localtime(&timeNow);
+    const time_t timeNow = std::time(nullptr);
+
+    const std::tm *timeLocal = std::localtime(&timeNow);
     if (timeLocal == nullptr) {
         return {};
     }
-
-    constexpr std::size_t buffSize           {80};
-    char                  buff[buffSize + 1] {};
 
     size_t uiRv = std::strftime(buff, buffSize, "%Y-%m-%d.%X", timeLocal);
     if (uiRv == 0) {
