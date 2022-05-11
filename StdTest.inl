@@ -11,16 +11,17 @@ namespace stdtest
 inline std::string
 currentDateTime()
 {
-    std::string           sRv;
-    constexpr std::size_t buffSize           {80};
-    char                  buff[buffSize + 1] {};
-    time_t                timeNow            {std::time(nullptr)};
-    std::tm              *timeLocal          {};
+    std::string sRv;
 
-    timeLocal = std::localtime(&timeNow);
+    time_t timeNow {std::time(nullptr)};
+
+    std::tm *timeLocal = std::localtime(&timeNow);
     if (timeLocal == nullptr) {
         return {};
     }
+
+    constexpr std::size_t buffSize           {80};
+    char                  buff[buffSize + 1] {};
 
     size_t uiRv = std::strftime(buff, buffSize, "%Y-%m-%d.%X", timeLocal);
     if (uiRv == 0) {
