@@ -1,0 +1,1 @@
+/home/skynowa/Projects/Scripts/Shell/CMake/eclipse.sh
