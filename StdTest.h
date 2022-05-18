@@ -29,22 +29,6 @@
 #include <iostream>
 #include <algorithm>
 //-------------------------------------------------------------------------------------------------
-#define STD_TRACE_POINT \
-    { \
-        std::cout \
-            << "\t::: " \
-            << " in "      << __FILE__ \
-            << ":"         << __LINE__ \
-            << ", error: " << std::strerror(errno) \
-            << " :::"      << std::endl; \
-    }
-    ///< trace point
-#define STD_TRACE_FUNC \
-    { \
-        std::cout << "\t::: " << __FUNCTION__ << " :::" << std::endl; \
-    }
-    ///< trace function
-//-------------------------------------------------------------------------------------------------
 #define STD_TEST_DO(expr, do_expr) \
     { \
         if ( !(expr) ) { \
