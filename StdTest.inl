@@ -69,8 +69,8 @@ modulePath()
 	filePath.resize( static_cast<size_t>(readed) );
 
 	sRv.assign(
-		std::find(filePath.rbegin(), filePath.rend(), '/').base(),
-		filePath.end());
+		std::find(filePath.crbegin(), filePath.crend(), '/').base(),
+		filePath.cend());
 #elif defined(__FreeBSD__)
     constexpr u_int mibSize            {4};
     int             mib[mibSize]       {CTL_KERN, KERN_PROC, KERN_PROC_PATHNAME, - 1};
