@@ -24,16 +24,20 @@ Report::Report(
 inline void
 Report::print() const
 {
+	const std::string &lastError = std::strerror(errno); // Must be called 1-st
+	const std::string &module    = _modulePath();
+	const std::string &dateTime  = _currentDateTime();
+
     std::cout
         << "\n"
         << "-------------------- STD_TEST --------------------" << "\n"
-        << " Module:     " << _modulePath()                     << "\n"
+        << " Module:     " << module                            << "\n"
         << " Expression: " << _expression                       << "\n"
         << " File:       " << _filePath                         << "\n"
         << " Function:   " << _functionName                     << "\n"
         << " Line:       " << _fileLine                         << "\n"
-        << " Last error: " << std::strerror(errno)              << "\n"
-        << " Date time:  " << _currentDateTime()                << "\n"
+        << " Last error: " << lastError                         << "\n"
+        << " Date time:  " << dateTime                          << "\n"
         << "--------------------------------------------------" << std::endl;
 }
 //-------------------------------------------------------------------------------------------------
