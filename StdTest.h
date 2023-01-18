@@ -71,8 +71,8 @@ namespace stdtest
 {
 
 //-------------------------------------------------------------------------------------------------
-class Report
-	///
+class Report final
+	/// Report to std::cout
 {
 public:
 ///\name ctors, dtor
@@ -90,7 +90,7 @@ public:
 ///\}
 
 	void print() const;
-		///< print report to std::cout
+		///< print to std::cout
 
 private:
 	const char     *_filePath {};
