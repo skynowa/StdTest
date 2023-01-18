@@ -77,13 +77,13 @@ class Report final
 public:
 ///\name ctors, dtor
 ///\{
-	Report() = delete;
-	Report(const Report &) = delete;
-	Report(Report &&) = delete;
-
 	Report(const char *filePath, const long int fileLine, const char *functionName,
 				const char *expression);
 	~Report() = default;
+
+	Report() = delete;
+	Report(const Report &) = delete;
+	Report(Report &&) = delete;
 
 	Report & operator = (const Report &) = delete;
 	Report & operator = (Report &&) = delete;
