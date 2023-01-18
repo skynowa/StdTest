@@ -81,12 +81,12 @@ public:
 	Report(const Report &) = delete;
 	Report(Report &&) = delete;
 
-	Report & operator = (const Report &) = delete;
-	Report & operator = (Report &&) = delete;
-
 	Report(const char *filePath, const long int fileLine, const char *functionName,
 				const char *expression);
 	~Report() = default;
+
+	Report & operator = (const Report &) = delete;
+	Report & operator = (Report &&) = delete;
 ///\}
 
 	void print() const;
