@@ -113,7 +113,20 @@ Report::_modulePath() const
 
     sRv.assign(buff);
 #elif defined(__APPLE__)
-    // TODO: module path
+	auto           buffSize = static_cast<std::uint32_t>(PATH_MAX);
+	std::tstring_t buff(buffSize + 1, {});
+
+	int_t iRv = ::_NSGetExecutablePath(&buff[0], &buffSize);
+	if (iRv != 0) {
+		buff.resize(buffSize);
+
+		iRv = ::_NSGetExecutablePath(&buff[0], &buffSize);
+		if (iRv != 0) {
+			buff = "<unknown>";
+		}
+	}
+
+	sRv = buff.c_str();	// Trim '\0'
 #else
     sRv = "<unknown>";
 #endif

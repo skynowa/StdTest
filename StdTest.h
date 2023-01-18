@@ -7,14 +7,14 @@
 #pragma once
 
 #if   defined(_WIN32)
-    // n/a
+    #include <windows.h>
 #elif defined(__linux__)
     #include <unistd.h>
     #include <linux/limits.h>
 #elif defined(__FreeBSD__)
     #include <sys/sysctl.h>
 #elif defined(__APPLE__)
-    // n/a
+    #include <mach-o/dyld.h> // ::_NSGetExecutablePath
 #else
     #warning StdTest: unsupported OS environment
 #endif
