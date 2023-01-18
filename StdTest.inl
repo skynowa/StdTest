@@ -24,7 +24,8 @@ Report::Report(
 inline void
 Report::print() const
 {
-	const std::string &lastError = std::strerror(errno); // Must be called 1-st
+	const int          errorCode = errno; // Last error - must be called 1-st !!!
+	const std::string &errorMsg  = std::strerror(errorCode);
 	const std::string &module    = _modulePath();
 	const std::string &dateTime  = _currentDateTime();
 
@@ -36,7 +37,7 @@ Report::print() const
         << " File:       " << _filePath                         << "\n"
         << " Function:   " << _functionName                     << "\n"
         << " Line:       " << _fileLine                         << "\n"
-        << " Last error: " << lastError                         << "\n"
+        << " Last error: " << errorCode << " - " << errorMsg    << "\n"
         << " Date time:  " << dateTime                          << "\n"
         << "--------------------------------------------------" << std::endl;
 }
