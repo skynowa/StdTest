@@ -34,8 +34,8 @@
 #define STD_TEST_DO(expr, do_expr) \
 	{ \
 		if ( !(expr) ) { \
-			stdtest::Report report; \
-			report.print(__FILE__, __LINE__, __FUNCTION__, #expr); \
+			stdtest::Report report(__FILE__, __LINE__, __FUNCTION__, #expr); \
+			report.print(); \
 			\
 			{ \
 				do_expr; \
@@ -75,14 +75,29 @@ class Report
 	///
 {
 public:
-			 Report() {}
-	virtual ~Report() {}
+///\name ctors, dtor
+///\{
+	Report() = delete;
+	Report(const Report &) = delete;
+	Report(Report &&) = delete;
 
-	void print(const char *filePath, const long int fileLine, const char *functionName,
-			const char *expression) const;
-		///< print report message
+	Report & operator = (const Report &) = delete;
+	Report & operator = (Report &&) = delete;
+
+	Report(const char *filePath, const long int fileLine, const char *functionName,
+				const char *expression);
+	~Report() = default;
+///\}
+
+	void print() const;
+		///< print report to std::cout
 
 private:
+	const char     *_filePath {};
+	const long int  _fileLine {};
+	const char     *_functionName {};
+	const char     *_expression {};
+
 	std::string _currentDateTime() const;
 		///< current date/time, format is %Y-%m-%d.%X
 	std::string _modulePath() const;

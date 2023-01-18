@@ -8,22 +8,30 @@ namespace stdtest
 {
 
 //-------------------------------------------------------------------------------------------------
+Report::Report(
+	const char     *a_filePath,   	///< file path
+	const long int  a_fileLine,   	///< file line number
+	const char     *a_functionName,	///< function name
+	const char     *a_expression  	///< expression as string
+) :
+	_filePath     {a_filePath},
+	_fileLine     {a_fileLine},
+	_functionName {a_functionName},
+	_expression   {a_expression}
+{
+}
+//-------------------------------------------------------------------------------------------------
 inline void
-Report::print(
-	const char     *filePath,		///< file path
-	const long int  fileLine,		///< file line number
-	const char     *functionName,	///< function name
-	const char     *expression		///< expression as string
-) const
+Report::print() const
 {
     std::cout
         << "\n"
         << "-------------------- STD_TEST --------------------" << "\n"
         << " Module:     " << _modulePath()                     << "\n"
-        << " Expression: " << expression                        << "\n"
-        << " File:       " << filePath                          << "\n"
-        << " Function:   " << functionName                      << "\n"
-        << " Line:       " << fileLine                          << "\n"
+        << " Expression: " << _expression                       << "\n"
+        << " File:       " << _filePath                         << "\n"
+        << " Function:   " << _functionName                     << "\n"
+        << " Line:       " << _fileLine                         << "\n"
         << " Last error: " << std::strerror(errno)              << "\n"
         << " Date time:  " << _currentDateTime()                << "\n"
         << "--------------------------------------------------" << std::endl;
