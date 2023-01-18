@@ -5,7 +5,7 @@ project(StdTest_Test)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wformat")
 
-## add_executable(StdTest_Test StdTest_Test.cpp)
+add_executable(StdTest_Test StdTest_Test.cpp)
 
 install(
 	FILES
