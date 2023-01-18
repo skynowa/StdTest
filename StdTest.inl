@@ -122,7 +122,7 @@ Report::_modulePath() const
 
 		iRv = ::_NSGetExecutablePath(&buff[0], &buffSize);
 		if (iRv != 0) {
-			buff = "<unknown>";
+			return "<unknown>";
 		}
 	}
 
