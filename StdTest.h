@@ -29,40 +29,43 @@
 #include <iostream>
 #include <algorithm>
 //-------------------------------------------------------------------------------------------------
+///\name Test macros
+///\{
 #define STD_TEST_DO(expr, do_expr) \
-    { \
-        if ( !(expr) ) { \
-            stdtest::Report report; \
-            report.print(__FILE__, __LINE__, __FUNCTION__, #expr); \
-            \
-            { \
-                do_expr; \
-            } \
-        } \
-    }
-	///<
+	{ \
+		if ( !(expr) ) { \
+			stdtest::Report report; \
+			report.print(__FILE__, __LINE__, __FUNCTION__, #expr); \
+			\
+			{ \
+				do_expr; \
+			} \
+		} \
+	}
+	///< Test, do expression
 #define STD_TEST(expr) \
-    STD_TEST_DO(expr, {})
-	///<
+	STD_TEST_DO(expr, {})
+	///< Tets only
 #define STD_TEST_RET(expr, ret_expr) \
-    STD_TEST_DO(expr, return ret_expr)
-	///<
+	STD_TEST_DO(expr, return ret_expr)
+	///< Test, return expression
 #define STD_TEST_FAIL(expr) \
-    STD_TEST_DO(!(expr), {})
-	///<
+	STD_TEST_DO(!(expr), {}
+	///< Test fail expression
 #define STD_TEST_PTR(ptr) \
-    STD_TEST_DO(ptr != nullptr, {})
-	///<
+	STD_TEST_DO(ptr != nullptr, {})
+	///< Test pointer
 #define STD_TEST_NA(expr) \
-    ;
-	///<
+	;
+	///< Test not applicable (skip)
 #define STD_NOT_IMPLEMENTED \
-    STD_TEST(false && "Not implemented")
-    ///< show not implemented message and return value
+	STD_TEST(false && "Not implemented")
+	///< Show not implemented message and return value
+///\}
 
 #define STD_UNUSED(arg) \
 	{ static_cast<void>( ((true) ? (arg) : (arg)) ); }
-	///< hide "unused variable" warnings
+	///< Hide "unused variable" warnings
 //-------------------------------------------------------------------------------------------------
 namespace stdtest
 {
@@ -75,7 +78,7 @@ public:
 			 Report() {}
 	virtual ~Report() {}
 
-	void print(const char *filePath, const int fileLine, const char *functionName,
+	void print(const char *filePath, const long int fileLine, const char *functionName,
 			const char *expression) const;
 		///< print report message
 

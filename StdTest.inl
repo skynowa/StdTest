@@ -10,10 +10,10 @@ namespace stdtest
 //-------------------------------------------------------------------------------------------------
 inline void
 Report::print(
-	const char *filePath,		///< file path
-	const int   fileLine,		///< file line number
-	const char *functionName,	///< function name
-	const char *expression		///< expression as string
+	const char     *filePath,		///< file path
+	const long int  fileLine,		///< file line number
+	const char     *functionName,	///< function name
+	const char     *expression		///< expression as string
 ) const
 {
     std::cout
