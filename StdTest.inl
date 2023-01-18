@@ -3,12 +3,34 @@
  * \brief test, using C library and STL
  */
 
+
 namespace stdtest
 {
 
 //-------------------------------------------------------------------------------------------------
+inline void
+Report::print(
+	const char *filePath,		///< file path
+	const int   fileLine,		///< file line number
+	const char *functionName,	///< function name
+	const char *expression		///< expression as string
+) const
+{
+    std::cout
+        << "\n"
+        << "-------------------- STD_TEST --------------------" << "\n"
+        << " Module:     " << _modulePath()                     << "\n"
+        << " Expression: " << expression                        << "\n"
+        << " File:       " << filePath                          << "\n"
+        << " Function:   " << functionName                      << "\n"
+        << " Line:       " << fileLine                          << "\n"
+        << " Last error: " << std::strerror(errno)              << "\n"
+        << " Date time:  " << _currentDateTime()                << "\n"
+        << "--------------------------------------------------" << std::endl;
+}
+//-------------------------------------------------------------------------------------------------
 inline std::string
-currentDateTime()
+Report::_currentDateTime() const
 {
     std::string sRv;
 
@@ -33,7 +55,7 @@ currentDateTime()
 }
 //-------------------------------------------------------------------------------------------------
 inline std::string
-modulePath()
+Report::_modulePath() const
 {
     std::string sRv;
 
@@ -89,27 +111,6 @@ modulePath()
 #endif
 
     return sRv;
-}
-//-------------------------------------------------------------------------------------------------
-inline void
-printReport(
-	const char *filePath,		///< file path
-	const int   fileLine,		///< file line number
-	const char *functionName,	///< function name
-	const char *expression		///< expression as string
-)
-{
-    std::cout
-        << "\n"
-        << "-------------------- STD_TEST --------------------" << "\n"
-        << " Module:     " << modulePath()                      << "\n"
-        << " Expression: " << expression                        << "\n"
-        << " File:       " << filePath                          << "\n"
-        << " Function:   " << functionName                      << "\n"
-        << " Line:       " << fileLine                          << "\n"
-        << " Last error: " << std::strerror(errno)              << "\n"
-        << " Date time:  " << currentDateTime()                 << "\n"
-        << "--------------------------------------------------" << std::endl;
 }
 //-------------------------------------------------------------------------------------------------
 

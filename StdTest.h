@@ -32,7 +32,8 @@
 #define STD_TEST_DO(expr, do_expr) \
     { \
         if ( !(expr) ) { \
-            stdtest::printReport(__FILE__, __LINE__, __FUNCTION__, #expr); \
+            stdtest::Report report; \
+            report.print(__FILE__, __LINE__, __FUNCTION__, #expr); \
             \
             { \
                 do_expr; \
@@ -65,13 +66,26 @@
 //-------------------------------------------------------------------------------------------------
 namespace stdtest
 {
-std::string currentDateTime();
-    ///< current date/time, format is %Y-%m-%d.%X
-std::string modulePath();
-    ///< Get module path
-void        printReport(const char *filePath, const int fileLine, const char *functionName,
-				const char *expression);
-	///< print report message
+
+//-------------------------------------------------------------------------------------------------
+class Report
+	///
+{
+public:
+			 Report() {}
+	virtual ~Report() {}
+
+	void print(const char *filePath, const int fileLine, const char *functionName,
+			const char *expression) const;
+		///< print report message
+
+private:
+	std::string _currentDateTime() const;
+		///< current date/time, format is %Y-%m-%d.%X
+	std::string _modulePath() const;
+		///< Get module path
+};
+//-------------------------------------------------------------------------------------------------
 
 } // stdtest
 //-------------------------------------------------------------------------------------------------
