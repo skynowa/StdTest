@@ -53,7 +53,7 @@
 	STD_TEST_DO(!(expr), {}
 	///< Test fail expression
 #define STD_TEST_PTR(ptr) \
-	STD_TEST_DO(ptr != nullptr, {})
+	STD_TEST_DO((ptr) != nullptr, {})
 	///< Test pointer
 #define STD_TEST_NA(expr) \
 	;
