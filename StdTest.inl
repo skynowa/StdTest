@@ -9,10 +9,10 @@ namespace stdtest
 
 //-------------------------------------------------------------------------------------------------
 Report::Report(
-	const char     *a_filePath,   	///< file path
-	const long int  a_fileLine,   	///< file line number
-	const char     *a_functionName,	///< function name
-	const char     *a_expression  	///< expression as string
+	const char     *a_filePath,     ///< file path
+	const long int  a_fileLine,     ///< file line number
+	const char     *a_functionName, ///< function name
+	const char     *a_expression    ///< expression as string
 ) :
 	_filePath     {a_filePath},
 	_fileLine     {a_fileLine},
@@ -118,7 +118,7 @@ Report::_modulePath() const
 
     sRv.assign(buff);
 #elif defined(__APPLE__)
-	auto           buffSize = static_cast<std::uint32_t>(PATH_MAX);
+    constexpr auto buffSize = static_cast<std::uint32_t>(PATH_MAX);
 	std::tstring_t buff(buffSize + 1, {});
 
 	int_t iRv = ::_NSGetExecutablePath(&buff[0], &buffSize);
