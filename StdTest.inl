@@ -8,6 +8,7 @@ namespace stdtest
 {
 
 //-------------------------------------------------------------------------------------------------
+inline
 Report::Report(
 	const char     *a_filePath,     ///< file path
 	const long int  a_fileLine,     ///< file line number
